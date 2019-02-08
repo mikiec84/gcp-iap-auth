@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get']
+  env: ['PROJECT_ROOT=gcp-iap-auth']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=gcp-iap-auth']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcp-iap-auth:$TAG_NAME', '.']
+images: ['gcr.io/$PROJECT_ID/gcp-iap-auth:$TAG_NAME']
